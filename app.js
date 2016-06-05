@@ -1,23 +1,45 @@
-// Référence aux dépendances de l'application
-var express = require('express');
-var path = require('path');
-var _ = require('underscore');
-var bodyParser = require('body-parser')
-var gameController = require(__dirname + '/src/GameController.js');
-var bot = require(__dirname + '/src/bot.js');
+/**
+*
+* ---------------------------------------------------------------------------
+*
+* DEPENDENCIES
+*
+**/
 
-// Port
+// Framework
+var express = require('express'),
+path = require('path'),
+bodyParser = require('body-parser'),
+
+// Utils
+_ = require('underscore'),
+
+// Core
+gameController = require(__dirname + '/src/GameController.js'),
+bot = require(__dirname + '/src/bot.js'),
+
+dashboardConfig = require(__dirname + '/src/Config.js'),
+twitterBot = require(__dirname + '/src/TwitterBot.js');
+
+// ---------------------------------------------------------------------------
+
+
+/**
+*
+* PORT
+*
+**/
 var port = process.env.PORT || 3000;
 
 // Démarrage de l'application
 var app    = express() ;
     server = app.listen(port, function() {
-        console.log('Listening on port %d', server.address().port);  
+        console.log('Listening on port %d', server.address().port);
     });
 
 // Configuration
 app.use( bodyParser.json() );
-app.use(bodyParser.urlencoded({extended: true})); 
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -46,7 +68,41 @@ app.get('/newGame', function(req, res){
 
 });
 app.get('/', function(req, res){
-    res.render('index', {'title' : 'Puissance 4 - NodeJS + Angular'});
+    res.render('index', {'title' : 'Dashboard'});
 });
+
+var schedule = dashboardConfig.scheduler.TenSecondsEveryMinute;
+
+var tickCounter = 0;
+
+
+setInterval(function(){
+
+  console.log("Tick");
+
+  if(tickCounter == 0)
+  {
+    console.log("----  ", tickCounter);
+    gate = true;
+
+  }
+  else
+  {
+
+    console.log("----  ", tickCounter);
+    gate = false;
+
+    if(tickCounter == schedule.tickReturnToZero)
+    {
+      // greetNewFollowers();
+      // retweetFromList();
+      tickCounter = -1;
+
+    }
+  }
+
+  tickCounter++;
+
+}, schedule.tickInterval);
 
 module.exports = app;

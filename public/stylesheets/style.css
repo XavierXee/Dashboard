@@ -1,3 +1,27 @@
+.row-block {
+	padding: 20px;
+	min-height: 200px;
+	margin: 0px;
+	background-color: #00171f;
+  border-bottom: 1px solid #003459;
+	color: #FFFFFF;
+	font-size: 20px;
+}
+
+.sub-row-block {
+	margin: 0px 0px 10px 0;
+}
+
+.col-title {
+	min-height: 60px;
+	color: #00a8e8;
+}
+
+
+
+
+/****************************************** OLD ************/
+
 #grid {
 	text-align: center;
 }
@@ -31,3 +55,5 @@
 .played {
 	cursor: default;
 }
+
+/****************************************** OLD ************/

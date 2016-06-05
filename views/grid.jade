@@ -1,7 +1,7 @@
 block grid
     #grid(ng-model="ctrl.model" , ng-change="ctrl.modelChanged()")
         .row(ng-repeat="line in ctrl.lines")
-            .col.s12.m12.L12
+            .col.s12.m12.l12
                 span.point.point-size.blue-grey.lighten-5(
                     ng-repeat="column in ctrl.columns", 
                     id="{{column+line}}", 
