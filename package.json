@@ -1,0 +1,27 @@
+{
+    "name": "Puissance4",
+    "version": "0.0.1",
+    "description": "Puissance4 NodeJS",
+    "main": "app.js",
+    "author": "Xavier de Frutos",
+    "license": "quatre",
+    "scripts": {
+        "watch": "watchify app.js -o public/js/bundle.js -v",
+        "browserify": "browserify app.js | uglifyjs > public/js/bundle.js",
+        "build": "npm run browserify ",
+        "start": "npm run watch & nodemon app.js"
+    },
+    "dependencies": {
+        "express": "*",
+        "express-handlebars": "*",
+        "underscore": "*",
+        "node-jsx": "*",
+        "jade": "*",
+        "body-parser": "*"
+    },
+    "devDependencies": {
+        "browserify": "*",
+        "nodemon": "*",
+        "watchify": "*"
+    }
+}

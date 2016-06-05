@@ -1,0 +1,33 @@
+#grid {
+	text-align: center;
+}
+
+.header {
+	height:50px;
+}
+
+.message {
+	height: 40px;
+	text-align: center;
+}
+
+.point {
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	display: inline-block;
+	color: black;
+	cursor: pointer;
+}
+
+.card-action {
+	padding-left: 200px;
+}
+
+.control {
+	cursor: pointer;
+}
+
+.played {
+	cursor: default;
+}
